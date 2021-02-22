@@ -1,8 +1,11 @@
 package com.example.random25012021;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,25 +14,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //built-in function
-        //Random 0 ~ 1
-        //double value = Math.random();
-        // Làm tròn >= 0.5
-        //int value2 = Math.round(1.5f);
-        // Làm tròn xuống
-        //double value3 = Math.floor(1.99);
-        // Làm tròn lên
-        //double value4 = Math.ceil(1.01);
-        // Tính căn bậc 2
-        //double value5 = Math.sqrt(9);
-        //int value6 = Math.abs(-10);
+        // Random : 0 ~ 1
+        // Viết random chạy từ 5 ~ 10
 
-        //Log.d("BBB","Trị tuyệt đối = " + value6);
-        // Khi sử dụng hàm
-        // 1 : Tham số truyền vào là gì : ctrl + P
-        // 2 : Giá trị trả về
 
-        // Phím nhanh gợi ý sữa lỗi : alt + enter
-//        Log.d("BBB" , String.valueOf(value));
+//        double value = Math.round(Math.random() * 5 ) + 5;
+//        Log.d("BBB","Giá trị random = " + value);
+
+//        int a = 10;
+
+        // Kiểu dữ liệu đối tượng (Khởi tạo vùng nhớ và có địa chỉ)
+        Random random = new Random();
+
+        // Xử lý random trong 5 -> 10
+        for (int i = 0; i < 50; i++) {
+            int value = random.nextInt(10 - 5 + 1) + 5;
+            Log.d("BBB","Giá trị = " + value);
+        }
+
+
+
+
+
     }
 }
