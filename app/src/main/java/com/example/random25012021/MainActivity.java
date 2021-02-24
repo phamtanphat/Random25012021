@@ -60,17 +60,16 @@ public class MainActivity extends AppCompatActivity {
                     mEdtSoMax.setText(String.valueOf(sMax));
                 }
 
-
+                Random random = new Random();
+                int result = random.nextInt(sMax - sMin + 1) + sMin;
+                mTvResult.setText(String.valueOf(result));
             }
         });
 
 
-        // Yêu cầu về nhà
-        // Task 1 : Kiểm tra người dùng phải nhập đủ số min và số max
-        // Task 2 : Kiểm tra giá trị max không được bé hơn hoặc bằng số min
-        //                    Xử lý : smax = smin + 1
-        // Task 3 : Xử lý random trong khoảng số max và số min
-        // Task 4 : Hiển thị giá trị random lên textview
+        // Task 5 : Xử lý random không bị trùng
+        // Task 6 : Xử lý hiển thị kết quả = 1 - 2 - 3 - 4 - 5
+        // Task 7 : Khi hết số random thì thông báo
 
     }
 
