@@ -45,7 +45,22 @@ public class MainActivity extends AppCompatActivity {
                 if (textSMin.length() <= 0 || textSMax.length() <= 0){
                     // Khi sử dụng hàm chỉ quan chức năng , tham số truyền vào và giá trị trả về
                     Toast.makeText(MainActivity.this,"Bạn chưa nhập đủ thông tin",Toast.LENGTH_LONG).show();
+                    return;
                 }
+
+//                int = Integer
+//                boolean = Boolean
+//                float = Float
+
+                int sMin = Integer.parseInt(textSMin);
+                int sMax = Integer.parseInt(textSMax);
+
+                if (sMax <= sMin){
+                    sMax = sMin + 1;
+                    mEdtSoMax.setText(String.valueOf(sMax));
+                }
+
+
             }
         });
 
