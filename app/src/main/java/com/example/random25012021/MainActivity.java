@@ -19,8 +19,11 @@ public class MainActivity extends AppCompatActivity {
 
     // 1 : Khai báo
     EditText mEdtSoMin,mEdtSoMax;
-    Button mBtnRandom;
+    Button mBtnRandom,mBtnAddRange,mBtnReset;
     TextView mTvResult;
+    ArrayList<Integer> mArrNumbers;
+    Random mRandom;
+    String mTextResult = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +34,15 @@ public class MainActivity extends AppCompatActivity {
         mEdtSoMax = findViewById(R.id.editTextSMax);
         mBtnRandom = findViewById(R.id.buttonRandom);
         mTvResult = findViewById(R.id.textViewResult);
+        mBtnAddRange = findViewById(R.id.buttonAddRange);
+        mBtnReset = findViewById(R.id.buttonReset);
 
+        mArrNumbers = new ArrayList<>();
+        mRandom = new Random();
 
         // Sự kiện
-        // Call back function
-        mBtnRandom.setOnClickListener(new View.OnClickListener() {
+
+        mBtnAddRange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String textSMin = mEdtSoMin.getText().toString();
@@ -48,9 +55,6 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-//                int = Integer
-//                boolean = Boolean
-//                float = Float
 
                 int sMin = Integer.parseInt(textSMin);
                 int sMax = Integer.parseInt(textSMax);
@@ -60,20 +64,28 @@ public class MainActivity extends AppCompatActivity {
                     mEdtSoMax.setText(String.valueOf(sMax));
                 }
 
-                Random random = new Random();
-                int result = random.nextInt(sMax - sMin + 1) + sMin;
-                mTvResult.setText(String.valueOf(result));
+                mArrNumbers.clear();
+
+                for (int i = sMin; i <= sMax ; i++) {
+                    mArrNumbers.add(i);
+                }
             }
         });
-        //0 -10
-        //for (int i=smin, i<=smax,i++) {
-        //    arr[smax - i]=i;
-        //}
 
-
-        // Task 5 : Xử lý random không bị trùng
-        // Task 6 : Xử lý hiển thị kết quả = 1 - 2 - 3 - 4 - 5
-        // Task 7 : Khi hết số random thì thông báo
+        mBtnRandom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Random ngẫu nhiên 1 vị trí bất trong mảng
+                int randomIndex = mRandom.nextInt(mArrNumbers.size());
+                // Từ vị trí ngẫu nhiên mình sẽ truy cập để lấy dữ liệu của vị trí này
+                int value = mArrNumbers.get(randomIndex);
+                // Sâu chuỗi các kết quả để hiển thị
+                mTextResult +=  value + " - ";
+                mTvResult.setText(mTextResult);
+                // Khi hiển thị kết quả thì xóa phần tử random để lần sau không xuất hiện lại
+                mArrNumbers.remove(randomIndex);
+            }
+        });
 
     }
 
