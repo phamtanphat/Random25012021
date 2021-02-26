@@ -65,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
                 mTvResult.setText(String.valueOf(result));
             }
         });
+        //0 -10
+        //for (int i=smin, i<=smax,i++) {
+        //    arr[smax - i]=i;
+        //}
 
 
         // Task 5 : Xử lý random không bị trùng

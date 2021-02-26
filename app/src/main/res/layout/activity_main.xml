@@ -39,6 +39,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="Reset"
+        android:id="@+id/buttonReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:text="Add Range"
+        android:id="@+id/buttonAddRange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
         android:id="@+id/buttonRandom"
         android:text="Random"
         android:layout_marginTop="20dp"
