@@ -75,15 +75,24 @@ public class MainActivity extends AppCompatActivity {
         mBtnRandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Random ngẫu nhiên 1 vị trí bất trong mảng
-                int randomIndex = mRandom.nextInt(mArrNumbers.size());
-                // Từ vị trí ngẫu nhiên mình sẽ truy cập để lấy dữ liệu của vị trí này
-                int value = mArrNumbers.get(randomIndex);
-                // Sâu chuỗi các kết quả để hiển thị
-                mTextResult +=  value + " - ";
-                mTvResult.setText(mTextResult);
-                // Khi hiển thị kết quả thì xóa phần tử random để lần sau không xuất hiện lại
-                mArrNumbers.remove(randomIndex);
+                if (mArrNumbers.size() > 0){
+                    // Random ngẫu nhiên 1 vị trí bất trong mảng
+                    int randomIndex = mRandom.nextInt(mArrNumbers.size());
+                    // Từ vị trí ngẫu nhiên mình sẽ truy cập để lấy dữ liệu của vị trí này
+                    int value = mArrNumbers.get(randomIndex);
+                    // Sâu chuỗi các kết quả để hiển thị
+                    if (mArrNumbers.size() == 1){
+                        mTextResult +=  value;
+                    }else{
+                        mTextResult +=  value + " - ";
+                    }
+                    mTvResult.setText(mTextResult);
+                    // Khi hiển thị kết quả thì xóa phần tử random để lần sau không xuất hiện lại
+                    mArrNumbers.remove(randomIndex);
+                }else{
+                    Toast.makeText(MainActivity.this, "Kết thúc", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
