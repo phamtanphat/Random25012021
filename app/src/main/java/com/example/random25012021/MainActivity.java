@@ -42,11 +42,45 @@ public class MainActivity extends AppCompatActivity {
 
         // Sự kiện
 
+        // Điều kiện hiển thị
+        // Khi app chạy lên
+//          + Nút random sẽ không được click
+//          + Nút reset va add range sẽ hiển thị
+
+        mBtnRandom.setEnabled(false);
+        // Click reset
+//        + Xóa dữ liệu trong 2 edittext
+//        + Nút random sẽ không được click
+//        + Kết quả sẽ được xóa
+        mBtnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mEdtSoMax.setText("");
+                mEdtSoMin.setText("");
+                mTextResult = "";
+
+                mTvResult.setText(mTextResult);
+                mBtnRandom.setEnabled(false);
+                mEdtSoMax.setEnabled(true);
+                mEdtSoMin.setEnabled(true);
+                mBtnAddRange.setEnabled(true);
+            }
+        });
+//        Click Add Range
+//        + 2 edittext sẽ không được nhận giá trị mới
+//        + Hiển thị nút random
+
+//        Click Random
+//        + Hiển thị giá trị lên text
+
+
         mBtnAddRange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String textSMin = mEdtSoMin.getText().toString();
                 String textSMax = mEdtSoMax.getText().toString();
+
+
 
                 // Kiểm tra smin hoặc smax có bị bỏ trống hay không
                 if (textSMin.length() <= 0 || textSMax.length() <= 0){
@@ -55,6 +89,10 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
+                mEdtSoMax.setEnabled(false);
+                mEdtSoMin.setEnabled(false);
+                mBtnRandom.setEnabled(true);
+                mBtnAddRange.setEnabled(false);
 
                 int sMin = Integer.parseInt(textSMin);
                 int sMax = Integer.parseInt(textSMax);
@@ -69,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = sMin; i <= sMax ; i++) {
                     mArrNumbers.add(i);
                 }
+                Toast.makeText(MainActivity.this, "Đã thêm thành công", Toast.LENGTH_SHORT).show();
             }
         });
 
